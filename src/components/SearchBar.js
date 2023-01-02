@@ -38,7 +38,7 @@ function SearchBar() {
         type="button"
         data-testid="exec-search-btn"
       >
-        search
+        Search
       </button>
     </div>
   )
