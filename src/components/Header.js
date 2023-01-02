@@ -1,12 +1,18 @@
 import React, { useContext, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import MainContext from '../context/MainContext';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
+import SearchBar from './SearchBar';
 
 function Header({ title }) {
-  const { isSearchIconOn, setIsSearchIconOn } = useContext(MainContext);
+  const { isSearchIconOn, setIsSearchIconOn, isSearchBarOn, setIsSearchBarOn } = useContext(MainContext);
   const { pathname } = useLocation();
+  const history = useHistory();
+
+  const profileBtn = () => {
+    history.push('/profile');
+  };
 
   useEffect(() => {
     if (pathname === '/done-recipes' || pathname === '/favorite-recipes' || pathname === '/profile') {
@@ -17,14 +23,33 @@ function Header({ title }) {
   }, [pathname, setIsSearchIconOn]);
 
   return (
-    <div>
-      <img src={ profileIcon } alt="Profile Icon" data-testid="profile-top-btn" />
+    <div className="header-container">
+      <input
+        type="image"
+        src={ profileIcon }
+        alt="Profile Icon"
+        data-testid="profile-top-btn"
+        onClick={ profileBtn }
+      />
       <h1>{ title }</h1>
       {
         isSearchIconOn ? (
-        <img src={ searchIcon } alt="Search Icon" data-testid="search-top-btn" />
+        <input
+          type="image"
+          src={ searchIcon }
+          alt="Search Icon"
+          data-testid="search-top-btn"
+          onClick={ () => isSearchBarOn ? setIsSearchBarOn(false) : setIsSearchBarOn(true) }
+        />
         ) : null
       }
+      <div>
+        {
+          isSearchBarOn ? (
+            <SearchBar />
+          ) : null
+        }
+      </div>
     </div>
   )
 }
