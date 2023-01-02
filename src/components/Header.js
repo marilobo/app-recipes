@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import MainContext from '../context/MainContext';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
@@ -7,6 +7,11 @@ import searchIcon from '../images/searchIcon.svg';
 function Header({ title }) {
   const { isSearchIconOn, setIsSearchIconOn } = useContext(MainContext);
   const { pathname } = useLocation();
+  const history = useHistory();
+
+  const profileBtn = () => {
+    history.push('/profile');
+  };
 
   useEffect(() => {
     if (pathname === '/done-recipes' || pathname === '/favorite-recipes' || pathname === '/profile') {
@@ -18,7 +23,13 @@ function Header({ title }) {
 
   return (
     <div>
-      <img src={ profileIcon } alt="Profile Icon" data-testid="profile-top-btn" />
+      <input
+        type="image"
+        src={ profileIcon }
+        alt="Profile Icon"
+        data-testid="profile-top-btn"
+        onClick={ profileBtn }
+      />
       <h1>{ title }</h1>
       {
         isSearchIconOn ? (
