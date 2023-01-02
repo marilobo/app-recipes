@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import AppContext from '../context/AppContext';
+import MainContext from '../context/MainContext';
 
 function Ingredients({ response }) {
   const { ingredients, setIngredients, localSave,
-    setLocalSave, setIsChecked } = useContext(AppContext);
+    setLocalSave, setIsChecked } = useContext(MainContext);
   const [updated, setUpdated] = useState({});
 
   const history = useHistory();
