@@ -6,11 +6,14 @@ function MainProvider({ children }) {
     email: '',
     password: '',
   });
+  const [isSearchIconOn, setIsSearchIconOn] = useState(true);
 
   const value = useMemo(() => ({
     user,
     setUser,
-  }), [user, setUser]);
+    isSearchIconOn,
+    setIsSearchIconOn,
+  }), [user, setUser, isSearchIconOn, setIsSearchIconOn]);
 
   return (
     <MainContext.Provider value={ value }>
