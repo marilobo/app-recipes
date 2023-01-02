@@ -23,7 +23,7 @@ function Header({ title }) {
   }, [pathname, setIsSearchIconOn]);
 
   return (
-    <div>
+    <div className="header-container">
       <input
         type="image"
         src={ profileIcon }
