@@ -3,9 +3,10 @@ import { useHistory, useLocation } from 'react-router-dom';
 import MainContext from '../context/MainContext';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
+import SearchBar from './SearchBar';
 
 function Header({ title }) {
-  const { isSearchIconOn, setIsSearchIconOn } = useContext(MainContext);
+  const { isSearchIconOn, setIsSearchIconOn, isSearchBarOn, setIsSearchBarOn } = useContext(MainContext);
   const { pathname } = useLocation();
   const history = useHistory();
 
@@ -33,9 +34,22 @@ function Header({ title }) {
       <h1>{ title }</h1>
       {
         isSearchIconOn ? (
-        <img src={ searchIcon } alt="Search Icon" data-testid="search-top-btn" />
+        <input
+          type="image"
+          src={ searchIcon }
+          alt="Search Icon"
+          data-testid="search-top-btn"
+          onClick={ () => isSearchBarOn ? setIsSearchBarOn(false) : setIsSearchBarOn(true) }
+        />
         ) : null
       }
+      <div>
+        {
+          isSearchBarOn ? (
+            <SearchBar />
+          ) : null
+        }
+      </div>
     </div>
   )
 }
