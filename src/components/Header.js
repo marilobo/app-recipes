@@ -1,10 +1,12 @@
 import React from 'react';
-import { BiUserCircle } from 'react-icons/bi';
+import profileIcon from '../images/profileIcon.svg';
+import searchIcon from '../images/searchIcon.svg';
 
 function Header() {
   return (
     <div>
-      <BiUserCircle className="user-icon" />
+      <img src={ profileIcon } alt="Profile Icon" data-testid="profile-top-btn" />
+      <img src={ searchIcon } alt="Search Icon" data-testid="search-top-btn" />
     </div>
   )
 }
