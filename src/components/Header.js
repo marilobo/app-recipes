@@ -9,7 +9,7 @@ function Header({ title }) {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    if (pathname === '/done-recipes' || pathname === 'favorite-recipes') {
+    if (pathname === '/done-recipes' || pathname === '/favorite-recipes' || pathname === '/profile') {
       setIsSearchIconOn(false)
     } else {
       setIsSearchIconOn(true)
