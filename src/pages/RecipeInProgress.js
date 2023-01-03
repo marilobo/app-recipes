@@ -4,6 +4,7 @@ import { fetchDrinkByID, fetchMealByID } from '../services/fetchApi';
 import Details from '../components/Details';
 import Ingredients from '../components/Ingredients';
 import MainContext from '../context/MainContext';
+import '../style/RecipeInProgress.css';
 
 function RecipeInProgress() {
   const history = useHistory();
