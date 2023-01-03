@@ -63,7 +63,6 @@ function RecipeInProgress() {
     const productDetails = async () => {
       if (pathname.match('/meals/')) {
         const response = await fetchMealByID(id);
-        console.log(response);
         setMealInProgress(response[0]);
       } else {
         const response = await fetchDrinkByID(id);
