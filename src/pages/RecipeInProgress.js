@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { requestMealByID, requestDrinkByID } from '../services/requestApi';
+import { fetchDrinkByID, fetchMealByID } from '../services/fetchApi';
 import Details from '../components/Details';
 import Ingredients from '../components/Ingredients';
 import MainContext from '../context/MainContext';
@@ -62,10 +62,11 @@ function RecipeInProgress() {
   useEffect(() => {
     const productDetails = async () => {
       if (pathname.match('/meals/')) {
-        const response = await requestMealByID(id);
+        const response = await fetchMealByID(id);
+        console.log(response);
         setMealInProgress(response[0]);
       } else {
-        const response = await requestDrinkByID(id);
+        const response = await fetchDrinkByID(id);
         setDrinkInProgress(response[0]);
       }
     };
